@@ -9,6 +9,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 with open("input.txt", "r") as file:
     names = [line.strip() for line in file]
 
+# Save TM class details
+tm_class = names.pop(0)
+
 # Setting up Chrome WebDriver
 chrome_service = Service('./chromedriver-win64/chromedriver.exe')
 chrome_service.start()
@@ -31,7 +34,7 @@ for name in names:
     # Insert value "41" into class input box
     class_input = driver.find_element(By.ID, "ContentPlaceHolder1_TBClass")
     class_input.clear()
-    class_input.send_keys("41")
+    class_input.send_keys(tm_class)
 
     # Print instructions and input Captcha from the user
     captcha = input("Enter Captcha: ")
